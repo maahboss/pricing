@@ -1,0 +1,157 @@
+
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    
+
+    <table id="myTable" class="table " >
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                   Name
+                </th>
+                <th>
+                    Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+    
+            
+    
+                <tr>
+                    <td>
+                        Moh 
+                    </td>
+                    <td>
+                        200 $
+                    </td>
+                    <td>
+                       16
+                    </td>
+                    <td>
+                        3200 $
+                    </td>
+                    
+                </tr>
+
+                <tr>
+                    <td>
+                        lara 
+                    </td>
+                    <td>
+                        150 $
+                    </td>
+                    <td>
+                       7
+                    </td>
+                    <td>
+                        1050 $
+                    </td>
+                    
+                </tr>
+            
+        </tbody>
+    
+    </table>
+    
+
+<div class="row-md-3" align="center">
+
+<input type="text" id="c1" placeholder="Name"  >
+
+
+<input type="text" id="c2" placeholder="price" onfocusout="AddDollar(this.id)" >
+
+<input type="text" id="c3" placeholder="Quantity" onfocusout="Multip()"  >
+<input type="text" id="c4" placeholder="Total" disabled>
+
+</div>
+</br>
+<button id="addRow" style="margin-left: 630px" > Add Row</button>
+
+</br>
+</br>
+</br>
+
+<p>It's sample of index  , </p>
+<p style="color: blue">* you can change how many entries in page Top-left</p>
+<p style="color: blue">* you can search any field in Top-Right </p>
+<p style="color: blue">* you can sort any column</p>
+
+
+
+
+</body>
+</html>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+
+
+   $(document).ready(function() {
+
+    var t = $('#myTable').DataTable();
+    
+    $('#addRow').on( 'click', function () {
+        t.row.add( [
+        document.getElementById("c1").value ,
+        document.getElementById("c2").value ,
+        document.getElementById("c3").value,
+        document.getElementById("c4").value 
+        
+            
+        ] ).draw( false );
+
+        document.getElementById("c1").value ="";
+        document.getElementById("c2").value ="";
+        document.getElementById("c3").value ="";
+        document.getElementById("c4").value ="";
+
+
+
+    } );
+ 
+    // Automatically add a first row of data
+    $('#addRow').click();
+ } );
+   
+   function AddDollar(id) {
+       var x = document.getElementById(id);
+       x.value = x.value + " $";
+
+   }
+
+   function Multip() {
+      var pric = document.getElementById("c2");
+      var qty = document.getElementById("c3");
+      var tot = document.getElementById("c4");
+      
+
+      tot.value = (parseInt(pric.value) * parseInt(qty.value)) + " $" ;
+      
+
+   }
+</script>
